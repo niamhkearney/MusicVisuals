@@ -14,14 +14,16 @@ public class NiamhsVisual extends Visual {
         // fullScreen(P3D, SPAN);
     }
 
+    int mode = 0;
+
     public void setup() {
         startMinim();
 
         // Call loadAudio to load an audio file to process
-        // loadAudio("heroplanet.mp3");
+        loadAudio("backyardboy.mp3");
 
         // Call this instead to read audio from the microphone
-        startListening();
+        // startListening();
 
     }
 
@@ -30,18 +32,22 @@ public class NiamhsVisual extends Visual {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
+
+        if (keyCode >= '0' && keyCode <= '9') {
+            mode = keyCode - '0';
+        }
     }
 
     public void draw() {
         background(0);
+        noStroke();
+
         try {
             // Call this if you want to use FFT data
             calculateFFT();
         } catch (VisualException e) {
             e.printStackTrace();
         }
-        // Call this is you want to use frequency bands
-        calculateFrequencyBands();
 
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();

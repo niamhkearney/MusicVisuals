@@ -28,11 +28,14 @@ public class NiamhsVisual extends Visual {
     }
 
     public void keyPressed() {
+
+        // Star music
         if (key == ' ') {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
 
+        // Choose visual based on number inputted
         if (keyCode >= '0' && keyCode <= '9') {
             mode = keyCode - '0';
         }
@@ -40,16 +43,25 @@ public class NiamhsVisual extends Visual {
 
     public void draw() {
         background(0);
-        noStroke();
+        stroke(255);
 
-        try {
-            // Call this if you want to use FFT data
-            calculateFFT();
-        } catch (VisualException e) {
-            e.printStackTrace();
+        switch (mode) {
+        case 0: {
+
+            circle(512, 250, 200);
+            circle(512, 250, 5);
+
+            break;
+        }
         }
 
+        /*
+         * try { // Call this if you want to use FFT data calculateFFT(); } catch
+         * (VisualException e) { e.printStackTrace(); }
+         * 
+         */
+
         // Call this is you want to get the average amplitude
-        calculateAverageAmplitude();
+        // calculateAverageAmplitude();
     }
 }

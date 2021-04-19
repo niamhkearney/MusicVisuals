@@ -49,6 +49,7 @@ public class NiamhsVisual extends Visual {
         case 0: {
 
             circle(512, 250, 200);
+            stroke(0);
             circle(512, 250, 5);
 
             break;

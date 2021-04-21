@@ -4,6 +4,8 @@ import ie.tudublin.*;
 
 public class NiamhsVisual extends Visual {
 
+    float[] lerpedBuffer;
+
     public void settings() {
         size(1024, 650);
 
@@ -15,6 +17,8 @@ public class NiamhsVisual extends Visual {
     }
 
     int mode = 0;
+    float y = 200;
+    float lerpedY = y;
 
     public void setup() {
 
@@ -24,8 +28,7 @@ public class NiamhsVisual extends Visual {
         // Call loadAudio to load an audio file to process
         loadAudio("heykids.mp3");
 
-        // Call this instead to read audio from the microphone
-        // startListening();
+        lerpedBuffer = new float[width];
 
     }
 
@@ -43,17 +46,27 @@ public class NiamhsVisual extends Visual {
         }
     }
 
+    float lerpedAverage = 0;
+
     public void draw() {
         background(0);
 
         switch (mode) {
         case 0: {
-            stroke(255);
+            noStroke();
+            fill(88, 200, 115);
             rect(512, 300, 30, 330); // x, y, width, height
 
-            calculateAverageAmplitude();
-            stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-            ellipse(512, 300, 200, 50);
+            // Petals
+            fill(0, 230, 220);
+            ellipse(450, 300, 160, 50); // x, y, width, height
+            ellipse(600, 300, 160, 50); // x, y, width, height
+            ellipse(527, 400, 50, 160); // x, y, width, height
+            ellipse(527, 200, 50, 160); // x, y, width, height
+
+            // Center
+            fill(50, 200, 220);
+            circle(527, 300, 100); // x, y, width
             break;
         }
         }

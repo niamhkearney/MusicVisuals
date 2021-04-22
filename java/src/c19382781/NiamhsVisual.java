@@ -53,6 +53,7 @@ public class NiamhsVisual extends Visual {
 
         switch (mode) {
         case 0: {
+
             noStroke();
             fill(88, 200, 115);
             rect(512, 300, 30, 330); // x, y, width, height
@@ -63,6 +64,30 @@ public class NiamhsVisual extends Visual {
             ellipse(600, 300, 160, 50); // x, y, width, height
             ellipse(527, 400, 50, 160); // x, y, width, height
             ellipse(527, 200, 50, 160); // x, y, width, height
+
+            pushMatrix();
+            translate(460, 230);
+            rotate(radians(45));
+            ellipse(0, 0, 160, 50); // x, y, width, height
+            popMatrix();
+
+            pushMatrix();
+            translate(595, 230);
+            rotate(radians(135));
+            ellipse(0, 0, 160, 50); // x, y, width, height
+            popMatrix();
+
+            pushMatrix();
+            translate(595, 370);
+            rotate(radians(225));
+            ellipse(0, 0, 160, 50); // x, y, width, height
+            popMatrix();
+
+            pushMatrix();
+            translate(460, 370);
+            rotate(radians(315));
+            ellipse(0, 0, 160, 50); // x, y, width, height
+            popMatrix();
 
             // Center
             fill(50, 200, 220);

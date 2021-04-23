@@ -1,13 +1,15 @@
 package c19382781;
 
+import ddf.minim.AudioBuffer;
 import ie.tudublin.*;
 
 public class NiamhsVisual extends Visual {
 
     float[] lerpedBuffer;
+    AudioBuffer ab;
 
     public void settings() {
-        size(1024, 650);
+        size(1024, 650, P3D);
 
         // Use this to make fullscreen
         // fullScreen();
@@ -51,43 +53,56 @@ public class NiamhsVisual extends Visual {
     public void draw() {
         background(0);
 
+        // float average = 0;
+        // float sum = 0;
+        float halfHeight = height / 3;
+
         switch (mode) {
         case 0: {
 
+            // Flower
+
+            // Stalk
             noStroke();
-            fill(88, 200, 115);
+            fill(88, 170, 115);
             rect(512, 300, 30, 330); // x, y, width, height
 
-            // Petals
-            fill(0, 230, 220);
-            ellipse(450, 300, 160, 50); // x, y, width, height
-            ellipse(600, 300, 160, 50); // x, y, width, height
-            ellipse(527, 400, 50, 160); // x, y, width, height
-            ellipse(527, 200, 50, 160); // x, y, width, height
+            for (int i = 0; i < getAudioBuffer().size(); i++) {
+                float c = map(i, 0, getAudioBuffer().size(), 0, 255);
+                fill(c, 255, 255);
+                lerpedBuffer[i] = lerp(lerpedBuffer[i], getAudioBuffer().get(i), 0.51f);
 
-            pushMatrix();
-            translate(460, 230);
-            rotate(radians(45));
-            ellipse(0, 0, 160, 50); // x, y, width, height
-            popMatrix();
+                // Petals
+                // fill(0, 230, 220);
+                ellipse(450, 300, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
+                ellipse(600, 300, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
+                ellipse(527, 400, 50, halfHeight - lerpedBuffer[i] * halfHeight * 6); // x, y, width, height
+                ellipse(527, 200, 50, halfHeight - lerpedBuffer[i] * halfHeight * 6); // x, y, width, height
 
-            pushMatrix();
-            translate(595, 230);
-            rotate(radians(135));
-            ellipse(0, 0, 160, 50); // x, y, width, height
-            popMatrix();
+                pushMatrix();
+                translate(460, 230);
+                rotate(radians(45));
+                ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
+                popMatrix();
 
-            pushMatrix();
-            translate(595, 370);
-            rotate(radians(225));
-            ellipse(0, 0, 160, 50); // x, y, width, height
-            popMatrix();
+                pushMatrix();
+                translate(595, 230);
+                rotate(radians(135));
+                ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
+                popMatrix();
 
-            pushMatrix();
-            translate(460, 370);
-            rotate(radians(315));
-            ellipse(0, 0, 160, 50); // x, y, width, height
-            popMatrix();
+                pushMatrix();
+                translate(595, 370);
+                rotate(radians(225));
+                ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
+                popMatrix();
+
+                pushMatrix();
+                translate(460, 370);
+                rotate(radians(315));
+                ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
+                popMatrix();
+            }
 
             // Center
             fill(50, 200, 220);

@@ -10,25 +10,33 @@ public class Flower {
         this.nv = nv;
     }
 
+    float[] lerpedBuffer;
+
     public void render() {
-        float[] lerpedBuffer;
+
         lerpedBuffer = new float[nv.width];
         float halfHeight = nv.height / 3;
 
         nv.colorMode(PApplet.HSB);
 
         // Flower
-
-        // Stalk
         nv.noStroke();
 
+        if (nv.mouseButton == PApplet.LEFT) {
+            nv.fill(255); // White
+        } else if (nv.mouseButton == PApplet.RIGHT) {
+            nv.fill(140, 200, 200); // White
+        } else {
+            nv.fill(3, 230, 250); // Red
+        }
+
         for (int i = 0; i < nv.getAudioBuffer().size(); i++) {
-            float c = PApplet.map(i, 0, nv.getAudioBuffer().size(), 0, 255);
-            nv.fill(c, 255, 255);
-            lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.51f);
+            // float c = PApplet.map(i, 0, nv.getAudioBuffer().size(), 0, 255);
+
+            lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.30f);
 
             // Petals
-            // fill(0, 230, 220);
+            // nv.fill(0, 230, 220);
             nv.ellipse(450, 300, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
             nv.ellipse(600, 300, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
             nv.ellipse(527, 400, 50, halfHeight - lerpedBuffer[i] * halfHeight * 6); // x, y, width, height
@@ -61,6 +69,7 @@ public class Flower {
 
         // Center
         nv.fill(50, 200, 220);
-        nv.circle(527, 300, 100); // x, y, width
+        nv.circle(527, 300, 100);
+
     }
 }

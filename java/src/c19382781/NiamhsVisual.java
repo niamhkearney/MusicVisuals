@@ -1,11 +1,12 @@
 package c19382781;
 
-import ddf.minim.AudioBuffer;
+//import ddf.minim.AudioBuffer;
 import ie.tudublin.*;
 
 public class NiamhsVisual extends Visual {
 
     Flower fl;
+    Shape sh;
 
     public void settings() {
         size(1024, 650, P3D);
@@ -28,6 +29,7 @@ public class NiamhsVisual extends Visual {
         loadAudio("heykids.mp3");
 
         fl = new Flower(this);
+        sh = new Shape(this);
 
     }
 
@@ -51,6 +53,16 @@ public class NiamhsVisual extends Visual {
         switch (mode) {
         case 0: {
 
+            textSize(32);
+            text("Press spacebar to play music", 10, 30);
+
+            break;
+        }
+        case 1: {
+            sh.render();
+            break;
+        }
+        case 2: {
             fl.render();
             break;
         }

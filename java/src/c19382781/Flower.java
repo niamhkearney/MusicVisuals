@@ -16,7 +16,6 @@ public class Flower {
 
         lerpedBuffer = new float[nv.width];
         float halfHeight = nv.height / 3;
-
         nv.colorMode(PApplet.HSB);
 
         // Flower
@@ -25,7 +24,7 @@ public class Flower {
         if (nv.mouseButton == PApplet.LEFT) {
             nv.fill(255); // White
         } else if (nv.mouseButton == PApplet.RIGHT) {
-            nv.fill(140, 200, 200); // White
+            nv.fill(140, 200, 200); // Blue
         } else {
             nv.fill(3, 230, 250); // Red
         }

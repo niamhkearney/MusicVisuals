@@ -31,8 +31,6 @@ public class Shape {
         float boxSize2 = 70 + (nv.getAmplitude() * 500);
         smoothedBoxSize2 = PApplet.lerp(smoothedBoxSize2, boxSize2, 0.5f);
 
-        float lineSize = 90 + (nv.getAmplitude() * 600);
-
         nv.rotateY(angle);
         nv.rotateX(angle);
         nv.strokeWeight(5);
@@ -44,14 +42,13 @@ public class Shape {
 
         nv.stroke(PApplet.map(nv.getSmoothedAmplitude() * 2, 0, 1, 0, 255), 255, 255);
         nv.box(smoothedBoxSize2);
+        nv.sphereDetail(5, 5);
+        nv.sphere(smoothedBoxSize2 * 2);
 
-        nv.line(lineSize, angle, angle, lineSize);
+        nv.rotateY(angle - angle * 10);
+        nv.rotateX(angle - angle * 10);
 
-        nv.rotateX(angle + angle * 2);
-        nv.line(lineSize, angle, angle, lineSize);
-
-        nv.rotateY(angle - angle * 2);
-        nv.line(lineSize, angle, angle, lineSize);
+        nv.box(smoothedBoxSize2 / 2);
 
         angle += 0.01f;
     }

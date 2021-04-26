@@ -7,6 +7,7 @@ public class NiamhsVisual extends Visual {
 
     Flower fl;
     Shape sh;
+    Waveform wf;
 
     public void settings() {
         size(1024, 650, P3D);
@@ -30,6 +31,7 @@ public class NiamhsVisual extends Visual {
 
         fl = new Flower(this);
         sh = new Shape(this);
+        wf = new Waveform(this);
 
     }
 
@@ -64,6 +66,10 @@ public class NiamhsVisual extends Visual {
         }
         case 2: {
             fl.render();
+            break;
+        }
+        case 3: {
+            wf.render();
             break;
         }
         }

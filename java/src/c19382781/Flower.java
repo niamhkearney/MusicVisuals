@@ -36,8 +36,9 @@ public class Flower {
             lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.30f);
 
             // Petals
+
             for (int j = 0; j < 8; j++) {
-                nv.ellipse(0, -50, lerpedBuffer[i] * halfHeight * 6, 50);
+                nv.ellipse(0, -50, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50);
                 nv.rotate(PApplet.radians(45));
             }
 

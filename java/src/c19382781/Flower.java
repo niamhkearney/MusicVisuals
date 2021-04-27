@@ -30,7 +30,6 @@ public class Flower {
         }
 
         for (int i = 0; i < nv.getAudioBuffer().size(); i++) {
-            // float c = PApplet.map(i, 0, nv.getAudioBuffer().size(), 0, 255);
 
             lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.30f);
 

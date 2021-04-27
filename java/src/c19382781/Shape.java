@@ -42,11 +42,13 @@ public class Shape {
 
         nv.stroke(PApplet.map(nv.getSmoothedAmplitude() * 2, 0, 1, 0, 255), 255, 255);
         nv.box(smoothedBoxSize2);
-        nv.sphereDetail(5, 5);
+        nv.sphereDetail(4, 4);
         nv.sphere(smoothedBoxSize2 * 2);
 
         nv.rotateY(angle - angle * 10);
         nv.rotateX(angle - angle * 10);
+
+        nv.stroke(PApplet.map(nv.getSmoothedAmplitude() * 4, 0, 1, 0, 255), 255, 255);
 
         nv.box(smoothedBoxSize2 / 2);
 

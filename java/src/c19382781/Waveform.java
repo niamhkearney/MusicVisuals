@@ -15,32 +15,12 @@ public class Waveform {
 
     public void render() {
 
-        float lerpedAverage = 0;
-        float average = 0;
-        float sum = 0;
+        nv.colorMode(PApplet.HSB);
+        for (int i = 0; i < nv.getAudioBuffer().size(); i += 6) {
+            nv.stroke(PApplet.map(i, 0, nv.getAudioBuffer().size(), 0, 255), 255, 255);
 
-        for (int i = 0; i < nv.getAudioBuffer().size(); i++) {
-            sum += PApplet.abs(nv.getAudioBuffer().get(i));
-        }
-        average = sum / nv.getAudioBuffer().size();
-
-        lerpedAverage = PApplet.lerp(lerpedAverage, average, 0.1f);
-
-        float r = 1f;
-        int numPoints = 3;
-        float thetaInc = PApplet.TWO_PI / (float) numPoints;
-        nv.strokeWeight(2);
-        float lastX = nv.width / 2, lastY = nv.height / 2;
-        for (int i = 0; i < 1000; i++) {
-            float c = PApplet.map(i, 0, 300, 0, 255) % 255.0f;
-            nv.stroke(c, 255, 255, 100);
-            float theta = i * (thetaInc + lerpedAverage * 5);
-            float x = nv.width / 2 + PApplet.sin(theta) * r;
-            float y = nv.height / 2 - PApplet.cos(theta) * r;
-            r += 0.5f + lerpedAverage;
-            nv.line(lastX, lastY, x, y);
-            lastX = x;
-            lastY = y;
+            // nv.line(i, cy, i, cy + cy * nv.getAudioBuffer().get(i));
+            nv.rect(i, cy, 5, +cy * nv.getAudioBuffer().get(i));
         }
 
     }

@@ -29,45 +29,23 @@ public class Flower {
             nv.fill(3, 230, 250); // Red
         }
 
+        nv.translate(nv.width / 2, nv.height / 2);
+
         for (int i = 0; i < nv.getAudioBuffer().size(); i++) {
 
             lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.30f);
 
             // Petals
-            // nv.fill(0, 230, 220);
-            nv.ellipse(450, 300, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
-            nv.ellipse(600, 300, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
-            nv.ellipse(527, 400, 50, halfHeight - lerpedBuffer[i] * halfHeight * 6); // x, y, width, height
-            nv.ellipse(527, 200, 50, halfHeight - lerpedBuffer[i] * halfHeight * 6); // x, y, width, height
+            for (int j = 0; j < 8; j++) {
+                nv.ellipse(0, -50, lerpedBuffer[i] * halfHeight * 6, 50);
+                nv.rotate(PApplet.radians(45));
+            }
 
-            nv.pushMatrix();
-            nv.translate(460, 230);
-            nv.rotate(PApplet.radians(45));
-            nv.ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
-            nv.popMatrix();
-
-            nv.pushMatrix();
-            nv.translate(595, 230);
-            nv.rotate(PApplet.radians(135));
-            nv.ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
-            nv.popMatrix();
-
-            nv.pushMatrix();
-            nv.translate(595, 370);
-            nv.rotate(PApplet.radians(225));
-            nv.ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
-            nv.popMatrix();
-
-            nv.pushMatrix();
-            nv.translate(460, 370);
-            nv.rotate(PApplet.radians(315));
-            nv.ellipse(0, 0, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50); // x, y, width, height
-            nv.popMatrix();
         }
 
         // Center
         nv.fill(50, 200, 220);
-        nv.circle(527, 300, 100);
+        nv.circle(0, 0, 100);
 
     }
 }

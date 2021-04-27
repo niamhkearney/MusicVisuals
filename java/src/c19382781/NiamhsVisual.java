@@ -2,6 +2,7 @@ package c19382781;
 
 //import ddf.minim.AudioBuffer;
 import ie.tudublin.*;
+import processing.core.PImage;
 
 public class NiamhsVisual extends Visual {
 
@@ -20,6 +21,7 @@ public class NiamhsVisual extends Visual {
     }
 
     int mode = 0;
+    PImage img;
 
     public void setup() {
 
@@ -28,6 +30,7 @@ public class NiamhsVisual extends Visual {
 
         // Call loadAudio to load an audio file to process
         loadAudio("heykids.mp3");
+        img = loadImage("img.jpg");
 
         fl = new Flower(this);
         sh = new Shape(this);

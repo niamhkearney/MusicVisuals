@@ -49,6 +49,7 @@ public class Shape {
         nv.rotateX(angle - angle * 10);
 
         nv.stroke(PApplet.map(nv.getSmoothedAmplitude() * 4, 0, 1, 0, 255), 255, 255);
+        nv.fill(PApplet.map(nv.getSmoothedAmplitude() * 4, 0, 1, 0, 255), 255, 255);
 
         nv.box(smoothedBoxSize2 / 2);
 

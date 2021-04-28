@@ -18,7 +18,6 @@ public class Shape {
         nv.colorMode(PApplet.HSB);
 
         nv.calculateAverageAmplitude();
-        nv.background(0);
         nv.noFill();
         nv.lights();
         nv.stroke(PApplet.map(nv.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);

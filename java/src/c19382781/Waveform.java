@@ -15,6 +15,8 @@ public class Waveform {
 
     public void render() {
 
+        nv.camera();
+
         nv.noFill();
 
         nv.colorMode(PApplet.HSB);

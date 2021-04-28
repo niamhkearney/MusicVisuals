@@ -14,6 +14,8 @@ public class Flower {
 
     public void render() {
 
+        nv.camera();
+
         lerpedBuffer = new float[nv.width];
         float halfHeight = nv.height / 3;
         nv.colorMode(PApplet.HSB);

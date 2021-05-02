@@ -29,7 +29,7 @@ public class NiamhsVisual extends Visual {
         startMinim();
 
         // Call loadAudio to load an audio file to process
-        loadAudio("heykids.mp3");
+        loadAudio("backyardboy.mp3");
         img = loadImage("img.jpg");
 
         fl = new Flower(this);

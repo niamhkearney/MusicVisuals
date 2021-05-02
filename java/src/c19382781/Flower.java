@@ -31,18 +31,18 @@ public class Flower {
             nv.fill(3, 230, 250); // Red
         }
 
+        // move flower to the middle of the screen
         nv.translate(nv.width / 2, nv.height / 2);
 
         for (int i = 0; i < nv.getAudioBuffer().size(); i++) {
 
-            lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.30f);
+            lerpedBuffer[i] = PApplet.lerp(lerpedBuffer[i], nv.getAudioBuffer().get(i), 0.50f);
 
             // Petals
 
-            for (int j = 0; j < 8; j++) {
-                nv.ellipse(0, -50, halfHeight - lerpedBuffer[i] * halfHeight * 6, 50);
-                nv.rotate(PApplet.radians(45));
-            }
+            nv.ellipse(0, -50, halfHeight - lerpedBuffer[i] * halfHeight * 3,
+                    halfHeight + lerpedBuffer[i] * halfHeight * 3);
+            nv.rotate(PApplet.radians(45));
 
         }
 

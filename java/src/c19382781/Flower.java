@@ -40,8 +40,8 @@ public class Flower {
 
             // Petals
 
-            nv.ellipse(0, -50, halfHeight - lerpedBuffer[i] * halfHeight * 3,
-                    halfHeight + lerpedBuffer[i] * halfHeight * 3);
+            nv.ellipse(0, -50, halfHeight - lerpedBuffer[i] * halfHeight * 4,
+                    halfHeight + lerpedBuffer[i] * halfHeight * 4);
             nv.rotate(PApplet.radians(45));
 
         }
